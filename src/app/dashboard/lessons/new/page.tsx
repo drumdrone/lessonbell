@@ -52,7 +52,7 @@ export default function NewLessonPage() {
       start_time: startDateTime.toISOString(),
       end_time: endDateTime.toISOString(),
       price: price ? parseFloat(price) : null,
-    })
+    } as any)
 
     if (error) {
       setError('Chyba pri vytvareni lekce')

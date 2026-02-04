@@ -17,7 +17,7 @@ export default async function PaymentsPage() {
     .order('start_time', { ascending: false })
     .limit(10)
 
-  const totalUnpaid = unpaidLessons?.reduce((sum, l) => sum + (l.price || 0), 0) || 0
+  const totalUnpaid = (unpaidLessons as any[])?.reduce((sum, l) => sum + (l.price || 0), 0) || 0
 
   return (
     <div>

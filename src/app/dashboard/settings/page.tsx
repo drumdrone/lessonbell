@@ -22,8 +22,8 @@ export default function SettingsPage() {
           .eq('id', user.id)
           .single()
         if (teacher) {
-          setName(teacher.name)
-          setPhone(teacher.phone || '')
+          setName((teacher as any).name)
+          setPhone((teacher as any).phone || '')
         }
       }
     }
@@ -40,7 +40,7 @@ export default function SettingsPage() {
 
     const { error } = await supabase
       .from('teachers')
-      .update({ name, phone: phone || null })
+      .update({ name, phone: phone || null } as any)
       .eq('id', user.id)
 
     if (error) {
