@@ -64,10 +64,10 @@ export default function CurriculumGenerator() {
   const [statusNote, setStatusNote] = useState('')
 
   // Get unique students from classes for the selected school
-  const getStudentsForSchool = (school: string) => {
+  const getStudentsForSchool = (school: string): string[] => {
     if (!classes) return []
     const schoolClasses = classes.filter(c => c.school === school)
-    const uniqueStudents = Array.from(new Set(schoolClasses.map(c => c.studentName)))
+    const uniqueStudents = Array.from(new Set(schoolClasses.map(c => c.studentName))) as string[]
     return uniqueStudents.sort()
   }
 
@@ -456,11 +456,11 @@ export default function CurriculumGenerator() {
                   </div>
                 ) : (
                   <div className="divide-y divide-gray-100">
-                    {schoolStudents.map((student) => {
+                    {schoolStudents.map((student: string) => {
                       const studentSongsCount = allSongs?.filter(
                         s => s.studentName === student && s.school === selectedSchool
                       ).length || 0
-                      
+
                       return (
                         <button
                           key={student}

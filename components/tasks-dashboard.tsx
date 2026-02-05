@@ -27,10 +27,10 @@ export default function TasksDashboard() {
   const [selectedSchool, setSelectedSchool] = useState<string>('LANSKROUN')
 
   // Get unique students from classes for the selected school (all days)
-  const getStudentsForSchool = (school: string) => {
+  const getStudentsForSchool = (school: string): string[] => {
     if (!classes) return []
     const schoolClasses = classes.filter(c => c.school === school)
-    const uniqueStudents = Array.from(new Set(schoolClasses.map(c => c.studentName)))
+    const uniqueStudents = Array.from(new Set(schoolClasses.map(c => c.studentName))) as string[]
     return uniqueStudents.sort()
   }
 
